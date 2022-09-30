@@ -1,10 +1,12 @@
 buildscript {
     repositories {
-        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
-        classpath 'io.ratpack:ratpack-gradle:1.0.0',
-                  'com.github.jengelman.gradle.plugins:shadow:1.2.1'
+        classpath "gradle.plugin.io.ratpack:ratpack-gradle:1.7.5"
+        classpath "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
     }
 }
 
@@ -22,11 +24,11 @@ repositories {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.11'
+    testImplementation 'junit:junit:4.13.2'
 
     // This is a Guice ratpack app
-    compile ratpack.dependency("guice")
-    runtime 'org.slf4j:slf4j-simple:1.7.10'
+    implementation ratpack.dependency("guice")
+    runtimeOnly 'org.slf4j:slf4j-simple:2.0.3'
 }
 
 // The “ratpack” plugin is IDEA aware.
